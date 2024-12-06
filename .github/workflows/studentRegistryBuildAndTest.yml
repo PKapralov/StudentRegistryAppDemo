@@ -10,13 +10,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-  
-
   build:
-
     runs-on: ubuntu-latest
 
-    permission:
+    permissions: # Тук се използва "permissions" (множествено число)
       contents: write
       pages: write
 
@@ -32,8 +29,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        
+
     - run: npm install
-    - run: npm start & 
+    - run: npm start &
     - run: chmod +x ./node_modules/.bin/mocha
     - run: npm test
+
