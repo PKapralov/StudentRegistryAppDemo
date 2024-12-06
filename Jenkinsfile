@@ -40,7 +40,7 @@ pipeline{
 
     post{
         always{
-            echo "CI pipeline completed"
+            echo "CI pipeline"
         }
     }
 }

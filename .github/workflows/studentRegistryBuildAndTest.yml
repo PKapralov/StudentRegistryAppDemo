@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permission:
-      contents: read
+      contents: write
       pages: write
 
     strategy:
@@ -32,6 +32,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        
     - run: npm install
-    - run: npm start &
+    - run: npm start & 
+    - run: chmod +x ./node_modules/.bin/mocha
     - run: npm test
