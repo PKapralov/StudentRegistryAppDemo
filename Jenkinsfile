@@ -1,50 +1,47 @@
-pipeline{
+pipeline {
     agent any
-    environment{
-        NODE_VERSION = 18.x
+    environment {
+        NODE_VERSION = '18.x' // Премахни точката в имената на променливите
     }
 
-    tools{
-        nodejs "NODE_VERSION"
+    tools {
+        nodejs "Node_18" // Това трябва да съвпада с инсталираната версия в Jenkins
     }
 
-    stages{
+    stages {
 
-        stage('Checkout'){
-            steps{
-                git branch : 'main',  url: 'https://github.com/PKapralov/StudentRegistryAppDemo'
-
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/PKapralov/StudentRegistryAppDemo'
             }
         }
-        stage("Install dependencies"){
-            steps{
-                script{
-                    
-                        bat
-                         'npm install'
-                    }
+
+        stage("Install dependencies") {
+            steps {
+                script {
+                    bat 'npm install'
                 }
             }
         }
-        stage("Start application"){
-            steps{
-                script{
+
+        stage("Start application") {
+            steps {
+                script {
                     bat 'start /b npm start'
-                    
-                   
                 }
             }
         }
 
-        stage("run tests"){
-            steps{
-                 bat 'npm test'
+        stage("Run tests") {
+            steps {
+                bat 'npm test'
             }
         }
     }
 
-    post{
-        always{
+    post {
+        always {
             echo "CI pipeline"
         }
     }
+}
