@@ -38,7 +38,7 @@ pipeline{
 
         stage("run tests"){
             steps{
-                 bat 'start npm test'
+                 bat 'npm test'
             }
         }
     }
@@ -48,4 +48,3 @@ pipeline{
             echo "CI pipeline"
         }
     }
-}
