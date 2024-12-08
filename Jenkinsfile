@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    environment {
-        NODE_VERSION = '18.x' // Премахни точката в имената на променливите
-    }
+   
 
     tools {
         nodejs "Node_18" // Това трябва да съвпада с инсталираната версия в Jenkins
